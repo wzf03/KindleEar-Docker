@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 work_dir=/app/KindleEar
 config_py=$work_dir/config.py
@@ -40,6 +40,7 @@ fi
 sed -i "s/^SRC_EMAIL\ =\ \".*\"/SRC_EMAIL\ =\ \"$KINDLEEAR_EMAIL\"/g" $config_py
 sed -i "s|^DOMAIN\ =\ \".*\"|DOMAIN\ =\ \"$KINDLEEAR_DOMAIN\"|g" $config_py
 
+# start server
 python $dev_appserver --port=8080 --host=0.0.0.0 --enable_host_checking=false \
 	--smtp_host=$KINDLEEAR_SMTP_SERVER --smtp_port=$KINDLEEAR_SMTP_PORT \
 	--smtp_user=$KINDLEEAR_EMAIL --smtp_password=$KINDLEEAR_SMTP_PASSWORD \
