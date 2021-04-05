@@ -11,7 +11,7 @@ RUN apk update && \
     pip install --upgrade pip setuptools && \
     rm -r /root/.cache && \
     apk add --no-cache --virtual build-dep wget unzip g++ gcc python2-dev jpeg-dev zlib-dev libxslt-dev && \
-    pip install pillow lxml jinja2 pycrypto && \
+    pip install --no-cache-dir pillow lxml jinja2 pycrypto && \
     wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.91.zip && \
     unzip google_appengine_1.9.91.zip && \
     rm google_appengine_1.9.91.zip && \
