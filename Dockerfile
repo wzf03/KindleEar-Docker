@@ -5,7 +5,7 @@ COPY . /app
 WORKDIR /app
 
 RUN apk update && \
-    apk add --no-cache python2 jpeg zlib libxslt && \
+    apk add --no-cache python2 jpeg zlib libxslt curl && \
     python -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip install --upgrade pip setuptools && \
@@ -16,7 +16,9 @@ RUN apk update && \
     unzip google_appengine_1.9.91.zip && \
     rm google_appengine_1.9.91.zip && \
     echo -e 'opt_in: false\ntimestamp: 0.0' > /root/.appcfg_nag && \
-    apk del build-dep
+    apk del build-dep && \
+    echo '00	*	*	*	*	/usr/bin/curl localhost:8080/deliver' > /etc/crontabs/root && \
+    echo '00	3	*	*	*	/usr/bin/curl localhost:8080/removelogs' >> /etc/crontabs/root
 EXPOSE 8080
 
 CMD sh ./start.sh

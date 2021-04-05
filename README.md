@@ -9,7 +9,7 @@ create `docker-compose.yml` in a new directory
 version: "3"
 services:
   kindleear:
-    image: ghcr.io/kunzfw/kindleear:1.26.7-1
+    image: ghcr.io/kunzfw/kindleear:1.26.7-2
     container_name: kindleear
     environment:
       - KINDLEEAR_EMAIL=youremail
@@ -38,5 +38,8 @@ docker run -d \
   -e KINDLEEAR_DOMAIN=http://example.com \
   -p 8080:8080 \
   --restart unless-stopped \
-  ghcr.io/kunzfw/kindleear:1.26.7-1
+  ghcr.io/kunzfw/kindleear:1.26.7-2
 ```
+
+## Note
+* Use crontab to support scheduled delivery
