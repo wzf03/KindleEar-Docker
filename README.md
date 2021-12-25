@@ -43,3 +43,4 @@ docker run -d \
 
 ## Note
 * Use crontab to support scheduled delivery
+* Known problem: database cannot be saved after the container stop
