@@ -42,7 +42,7 @@ docker run -d \
   -p 8080:8080 \
   -v ./data:/app/data \
   --restart unless-stopped \
-  ghcr.io/kunzfw/kindleear:1.26.9
+  ghcr.io/kunzfw/kindleear:latest
 ```
 
 ## Note
