@@ -42,9 +42,13 @@ docker run -d \
   -p 8080:8080 \
   -v ./data:/app/data \
   --restart unless-stopped \
-  ghcr.io/kunzfw/kindleear:1.26.7-3
+  ghcr.io/kunzfw/kindleear:1.26.9
 ```
 
 ## Note
 * Use crontab to support scheduled delivery
+<<<<<<< HEAD
 * Also support configuration through environment variable to be compatible with older version
+=======
+* Known problem: database cannot be saved after the container stop
+>>>>>>> 5efde3cbf4925cfca0bf2d7fa834362694ee3338
