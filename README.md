@@ -48,7 +48,11 @@ docker run -d \
 ## Note
 * Use crontab to support scheduled delivery
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Also support configuration through environment variable to be compatible with older version
+=======
+* Known problem: database cannot be saved after the container stop
+>>>>>>> 5efde3cbf4925cfca0bf2d7fa834362694ee3338
 =======
 * Known problem: database cannot be saved after the container stop
 >>>>>>> 5efde3cbf4925cfca0bf2d7fa834362694ee3338
