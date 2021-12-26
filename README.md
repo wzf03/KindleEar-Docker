@@ -9,17 +9,24 @@ create `docker-compose.yml` in a new directory
 version: "3"
 services:
   kindleear:
-    image: ghcr.io/kunzfw/kindleear:1.26.7-3
+    image: ghcr.io/kunzfw/kindleear:latest
     container_name: kindleear
-    environment:
-      - KINDLEEAR_EMAIL=youremail
-      - KINDLEEAR_SMTP_SERVER=smtp.example.com
-      - KINDLEEAR_SMTP_PORT=587
-      - KINDLEEAR_SMTP_PASSWORD=password
-      - KINDLEEAR_DOMAIN=http://example.com
     ports:
       - 8080:8080
+    volumes:
+      - ./data:/app/data
     restart: unless-stopped
+```
+crate `config.json` in the data directory you created
+```json
+{
+    // Necessary
+    "email": "youremail",
+    "smtpServer": "smtp.example.com",
+    "smtpPort": 587,
+    "smtpPassword": "password",
+    "domain": "http://example.com"
+}
 ```
 then run the container using [docker-compose](https://github.com/docker/compose)
 ```
@@ -28,18 +35,16 @@ docker-compose up -d
 
 ### docker cli
 
+create a `config.json` like above, then
 ```
 docker run -d \
   --name=kindleear \
-  -e KINDLEEAR_EMAIL=youremail \
-  -e KINDLEEAR_SMTP_SERVER=smtp.example.com \
-  -e KINDLEEAR_SMTP_PORT=587 \
-  -e KINDLEEAR_SMTP_PASSWORD=password \
-  -e KINDLEEAR_DOMAIN=http://example.com \
   -p 8080:8080 \
+  -v ./data:/app/data \
   --restart unless-stopped \
   ghcr.io/kunzfw/kindleear:1.26.7-3
 ```
 
 ## Note
 * Use crontab to support scheduled delivery
+* Also support configuration through environment variable to be compatible with older version

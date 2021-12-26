@@ -11,14 +11,16 @@ RUN apk update && \
     pip install --upgrade pip setuptools && \
     rm -r /root/.cache && \
     apk add --no-cache --virtual build-dep wget unzip g++ gcc python2-dev jpeg-dev zlib-dev libxslt-dev && \
-    pip install --no-cache-dir pillow lxml jinja2 pycrypto && \
-    wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.91.zip && \
-    unzip google_appengine_1.9.91.zip && \
-    rm google_appengine_1.9.91.zip && \
+    pip install --no-cache-dir pillow lxml jinja2 pycrypto json5 && \
+    unzip google_appengine.zip && \
+    rm google_appengine.zip && \
     echo -e 'opt_in: false\ntimestamp: 0.0' > /root/.appcfg_nag && \
     apk del build-dep && \
     echo '00	*	*	*	*	/usr/bin/curl localhost:8080/deliver' > /etc/crontabs/root && \
     echo '00	3	*	*	*	/usr/bin/curl localhost:8080/removelogs' >> /etc/crontabs/root
+
+VOLUME /app/data
+
 EXPOSE 8080
 
-CMD sh ./start.sh
+CMD python /app/start.py
