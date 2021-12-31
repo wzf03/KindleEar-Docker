@@ -36,4 +36,5 @@ os.system(
 
 # run KindleEar
 exec_template = "python /app/google_appengine/dev_appserver.py --datastore_path=/app/data/datastore --port=8080 --host=0.0.0.0 --enable_host_checking=false --smtp_host={} --smtp_port={} --smtp_user={} --smtp_password={} /app/KindleEar/app.yaml /app/KindleEar/module-worker.yaml"
+os.system("crond")
 os.system(exec_template.format(SMTP_SERVER, SMTP_PORT, EMAIL, SMTP_PASSWORD))
