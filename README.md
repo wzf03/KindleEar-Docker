@@ -9,7 +9,7 @@ create `docker-compose.yml` in a new directory
 version: "3"
 services:
   kindleear:
-    image: ghcr.io/kunzfw/kindleear:latest
+    image: ghcr.io/wzf03/kindleear:latest
     container_name: kindleear
     ports:
       - 8080:8080
@@ -42,7 +42,7 @@ docker run -d \
   -p 8080:8080 \
   -v ./data:/app/data \
   --restart unless-stopped \
-  ghcr.io/kunzfw/kindleear:latest
+  ghcr.io/wzf03/kindleear:latest
 ```
 
 ## Note
